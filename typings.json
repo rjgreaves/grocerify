@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "node-uuid": "registry:npm/node-uuid#1.4.7+20160723033700"
+  },
+  "globalDependencies": {
+    "es2015": "registry:env/es2015#1.0.0+20160526151700",
+    "jquery": "registry:dt/jquery#1.10.0+20160929162922"
+  }
+}
