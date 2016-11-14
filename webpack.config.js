@@ -38,6 +38,10 @@ var config = {
 
     loaders: [
     {
+        test: /\.ejs$/,
+        loader: "ejs-loader?variable=data"
+    },
+    {
         test: /\.tsx?$/,
         exclude: [nodeModulesPath],
         loader: 'ts-loader'
@@ -73,6 +77,9 @@ var config = {
         new webpack.HotModuleReplacementPlugin(),
         new ExtractTextPlugin('main.css', {
             allChunks: true
+        }),
+        new webpack.ProvidePlugin({
+            _: "underscore"
         })
     ]
 };
