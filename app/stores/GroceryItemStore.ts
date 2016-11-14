@@ -15,10 +15,10 @@ export class GroceryItemStore {
                         this.deleteGroceryItem(event.payload);
                         break;
                     case "buy":
-                        this.buy(event.payload);
+                        this.toggleBuy(event.payload, true);
                         break;
                     case "unbuy":
-                        this.unbuy(event.payload);
+                        this.toggleBuy(event.payload, false);
                         break;
                 }
             }
@@ -30,7 +30,7 @@ export class GroceryItemStore {
                 this.items = response;
                 this.triggerListeners();
             })
-            .catch((err) => {
+            .catch((err: any) => {
                 console.log(err);
             });
 
@@ -47,7 +47,7 @@ export class GroceryItemStore {
                 console.log("Post successfull, triggering listeners...")
                 this.triggerListeners();
             })
-            .catch((err) => {
+            .catch((err: any) => {
                 console.log(err);
             });
     }
@@ -62,22 +62,16 @@ export class GroceryItemStore {
         if(index >= 0){
             this.items.splice(index, 1);
         }
-        this.triggerListeners()
+        this.triggerListeners();
+        RestHelper.delete("api/items/" + item._id);
     }
 
-    buy(item: any) {
+    toggleBuy(item: any, isBought: boolean){
         let itemToUpdate = this.getItem(item);
         if(itemToUpdate != null){
-            itemToUpdate.purchased = true;
+            itemToUpdate.purchased = isBought || false;
             this.triggerListeners();
-        }
-    }
-
-    unbuy(item: any) {
-        let itemToUpdate = this.getItem(item);
-        if(itemToUpdate != null){
-            itemToUpdate.purchased = false;
-            this.triggerListeners();
+            RestHelper.patch("api/items/" + item._id, item);
         }
     }
 

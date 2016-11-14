@@ -3,7 +3,7 @@ import * as ReactDOM  from "react-dom";
 import { GroceryItemList } from "./components/GroceryItemList";
 import { GroceryItemStore } from "./stores/GroceryItemStore";
 
-console.log("Hello from JSX!");
+console.log("Hello from TSX!");
 
 let groceryItemStore = new GroceryItemStore();
 

@@ -1,5 +1,6 @@
 .strikethrough {
   text-decoration: line-through;
-  color: slategray; }
+  color: slategray;
+  background-color: #FFFFFF; }
 .grocery-item {
   background-colour: #ffffff; }

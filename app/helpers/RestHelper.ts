@@ -22,4 +22,25 @@ export class RestHelper{
                 })
         );
     }
+
+    static patch(url: string, data: any): Promise<any>{
+        return Promise.resolve(
+                $.ajax({
+                    method: "PATCH",
+                    url: url,
+                    data: data,
+                    dataType: "json"
+                })
+        );
+    }
+    
+    static delete(url: string): Promise<any>{
+        return Promise.resolve(
+                $.ajax({
+                    method: "DELETE",
+                    url: url,
+                    dataType: "json"
+                })
+        );
+    }
 }
